@@ -16,6 +16,9 @@ Resume Resurrector is a web application powered by LangChain and OpenAI's LLM mo
 ## DEMO
 http://resumeresurrector.streamlit.app/
 
+## Screenshot
+![image](https://github.com/TripleJ160/ResumeResurrector/assets/83926918/b51a3d6a-9733-42c4-8344-d2426cb4d0b2)
+
 ## Getting Started
 
 To get started with Resume Resurrector, follow these steps:
