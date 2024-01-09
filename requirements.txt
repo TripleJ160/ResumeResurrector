@@ -2,12 +2,13 @@ langchain==0.0.154
 PyPDF2==3.0.1
 python-dotenv==1.0.0
 faiss-cpu==1.7.4
+langchain
+PyPDF2
+python-dotenv
+faiss-cpu
 streamlit-extras
 altair==4.1.0
+altair
 streamlit
 openai
 tiktoken
-tqdm 
-pandas
-streamlit_lottie
-requests

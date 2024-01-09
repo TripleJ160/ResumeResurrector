@@ -1,6 +1,9 @@
 #Main File
 import streamlit as st
-import openai
+from openai import OpenAI
+import os
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
 from dotenv import load_dotenv
 import pickle
 from PyPDF2 import PdfReader
@@ -12,7 +15,6 @@ from langchain.chat_models import ChatOpenAI
 from langchain.chains.question_answering import load_qa_chain
 from streamlit_extras import add_vertical_space as avs
 from langchain.callbacks import get_openai_callback
-import os
 import time
 
 import requests
@@ -41,7 +43,7 @@ with st.sidebar:
 
 load_dotenv()
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+
 
 st.header("Resurrection Process")
 
@@ -93,18 +95,17 @@ Strictly display 5 of the least scored categories from above. Once you have revi
 """
 
 
-    chat = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "You are a strict recruiter based on the following job description listed" + jd_text},
-            {"role": "user", "content": resume_text + prompt}
-        ]
-    )
+    chat = client.chat.completions.create(model="gpt-3.5-turbo",
+    messages=[
+        {"role": "system", "content": "You are a strict recruiter based on the following job description listed" + jd_text},
+        {"role": "user", "content": resume_text + prompt}
+    ])
 
     progress_bar = st.progress(0)
     option_status = st.empty()
 
-    response = chat['choices'][0]['message']['content']
+    response = chat.choices[0].message.content
+
     
 
     start_time = time.time()
